@@ -25,3 +25,15 @@ const PORT = process.env.PORT || 4002;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+process.on("SIGINT", async function () {
+  console.log("SIGINT Shutdown received.");
+  process.exit(0);
+});
+
+// //Terminate active connection on kill
+process.on("SIGTERM", async function () {
+  console.log("SIGTERM Shutdown received.");
+  process.exit(0);
+});
+// set port, listen for requests
