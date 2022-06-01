@@ -3,9 +3,12 @@ const cors = require("cors");
 const axios = require('axios');
 const app = express();
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "*"
 };
 app.use(cors(corsOptions));
+// app.use(cors({
+//     origin: ['https://www.section.io', 'https://www.google.com/']
+// }));
 
 app.get("/", (req, res) => {
   axios.get('https://api.latoken.com/v2/ticker/FTP/USDT')
